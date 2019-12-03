@@ -8,6 +8,7 @@
 TicTacToeBoard::TicTacToeBoard()
 {
   turn = X;
+  turn_count = 0;
   for(int i=0; i<BOARDSIZE; i++)
     for(int j=0; j<BOARDSIZE; j++)
       board[i][j] = Blank;
@@ -19,7 +20,12 @@ TicTacToeBoard::TicTacToeBoard()
 **/
 Piece TicTacToeBoard::toggleTurn()
 {
-  return Invalid;
+    if (turn == X) {
+		turn = O;
+	} else {
+		turn = X;
+	}
+	return turn;
 }
 
 /**
@@ -33,7 +39,24 @@ Piece TicTacToeBoard::toggleTurn()
 **/ 
 Piece TicTacToeBoard::placePiece(int row, int column)
 {
-  return Invalid;
+	if (row > 2 || row < 0 || column > 2 || column < 0) {
+		return Invalid;
+	}
+	if (turn_count > 8) {
+		return Blank;
+	}
+	if (board[row][column] != Blank) {
+		return board[row][column];
+	}
+	toggleTurn();
+	turn_count++;
+	if (turn == X) {
+		board[row][column] = O;
+		return O;
+	} else {
+		board[row][column] = X;
+		return X;
+	}
 }
 
 /**
@@ -42,7 +65,10 @@ Piece TicTacToeBoard::placePiece(int row, int column)
 **/
 Piece TicTacToeBoard::getPiece(int row, int column)
 {
-  return Invalid;
+	if (row > 2 || row < 0 || column > 2 || column < 0) {
+		return Invalid;
+	}
+	return board[row][column];
 }
 
 /**
@@ -51,5 +77,33 @@ Piece TicTacToeBoard::getPiece(int row, int column)
 **/
 Piece TicTacToeBoard::getWinner()
 {
-  return Invalid;
+	//rows
+	if (board[0][0] == board[0][1] && board[0][0] == board[0][2] && board[0][0] != Blank) 
+		return board[0][0];
+	if (board[1][0] == board[1][1] && board[1][0] == board[1][2] && board[1][0] != Blank) 
+		return board[1][0];
+	if (board[2][0] == board[2][1] && board[2][0] == board[2][2] && board[2][0] != Blank) 
+		return board[2][0];
+
+	//columns
+	if (board[0][0] == board[1][0] && board[0][0] == board[2][0] && board[0][0] != Blank) 
+		return board[0][0];
+	if (board[0][1] == board[1][1] && board[0][1] == board[2][1] && board[0][1] != Blank) 
+		return board[0][1];
+	if (board[0][2] == board[1][2] && board[0][2] == board[2][2] && board[0][2] != Blank) 
+		return board[0][2];
+
+	//diags
+	if (board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[0][0] != Blank) 
+		return board[0][0];
+	if (board[0][2] == board[1][1] && board[0][2] == board[2][0] && board[0][2] != Blank) 
+		return board[0][2];
+
+	//no winner, game is still going
+	if (turn_count < 9) {
+		return Invalid;
+	}
+
+	//stalemate
+	return Blank;
 }
