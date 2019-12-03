@@ -179,7 +179,7 @@ TEST(TicTacToeBoardTest, getWinnerRow2) {
 TEST(TicTacToeBoardTest, getWinnerColumn0) {
 	TicTacToeBoard board;
 	board.placePiece(0,0);
-	board.placePiece(2,0);
+	board.placePiece(2,2);
 	board.placePiece(1,0);
 	board.placePiece(2,1);
 	board.placePiece(2,0);
