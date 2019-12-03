@@ -68,10 +68,6 @@ TEST(TicTacToeBoardTest, placePiece22) {
 	TicTacToeBoard board;
 	ASSERT_EQ(board.placePiece(2,2), X);
 }
-TEST(TicTacToeBoardTest, placePiece22) {
-	TicTacToeBoard board;
-	ASSERT_EQ(board.placePiece(2,2), X);
-}
 TEST(TicTacToeBoardTest, placePieceOutofBoundsRowLess) {
 	TicTacToeBoard board;
 	ASSERT_EQ(board.placePiece(-1,0), Invalid);
