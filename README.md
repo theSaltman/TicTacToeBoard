@@ -46,3 +46,5 @@ ___
 
 *Returns which Piece has won, if there is a winner, Invalid if the game
 is not over, or Blank if the board is filled and no one has won.*
+
+[![Coverage Status](https://coveralls.io/repos/github/theSaltman/TicTacToeBoard/badge.svg?branch=master)](https://coveralls.io/github/theSaltman/TicTacToeBoard?branch=master)
