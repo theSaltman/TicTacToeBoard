@@ -48,3 +48,4 @@ ___
 is not over, or Blank if the board is filled and no one has won.*
 
 [![Coverage Status](https://coveralls.io/repos/github/theSaltman/TicTacToeBoard/badge.svg?branch=master)](https://coveralls.io/github/theSaltman/TicTacToeBoard?branch=master)
+[![Build Status](https://travis-ci.org/theSaltman/TicTacToeBoard.svg?branch=master)](https://travis-ci.org/theSaltman/TicTacToeBoard)
